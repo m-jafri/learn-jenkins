@@ -21,5 +21,16 @@ services:
     volumes:
       - redis_data:/data
 
+  jenkins:
+    image: jenkins/jenkins:lts
+    ports:
+      - "8080:8080"
+    volumes:
+      - jenkins_home:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./:/workspace
+    user: root
+
 volumes:
   redis_data:
+  jenkins_home:
